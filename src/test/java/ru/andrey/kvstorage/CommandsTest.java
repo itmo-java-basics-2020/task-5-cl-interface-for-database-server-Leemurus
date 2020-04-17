@@ -93,7 +93,7 @@ public class CommandsTest {
 
         DatabaseCommandResult result = server.executeNextCommand(command.toString());
         assertEquals(FAILED, result.getStatus());
-        assertEquals(message, result.getErrorMessage());
+        assertEquals(Optional.of(message), result.getErrorMessage());
     }
 
     // ================= update key tests =================
@@ -129,7 +129,7 @@ public class CommandsTest {
 
         DatabaseCommandResult result = server.executeNextCommand(command.toString());
         assertEquals(FAILED, result.getStatus());
-        assertEquals(message, result.getErrorMessage());
+        assertEquals(Optional.of(message), result.getErrorMessage());
     }
 
     @Test
@@ -195,7 +195,7 @@ public class CommandsTest {
 
         DatabaseCommandResult result = server.executeNextCommand(command.toString());
         assertEquals(FAILED, result.getStatus());
-        assertEquals(message, result.getErrorMessage());
+        assertEquals(Optional.of(message), result.getErrorMessage());
     }
 
     @Test

@@ -10,7 +10,7 @@ public interface DatabaseCommandResult {
 
     boolean isSuccess();
 
-    String getErrorMessage();
+    Optional<String> getErrorMessage();
 
     enum DatabaseCommandStatus {
         SUCCESS, FAILED
@@ -49,8 +49,11 @@ public interface DatabaseCommandResult {
         }
 
         @Override
-        public String getErrorMessage() {
-            return result;
+        public Optional<String> getErrorMessage() {
+            if (status == DatabaseCommandStatus.FAILED) {
+                return Optional.of(result);
+            }
+            return Optional.empty();
         }
     }
 }
